@@ -1,6 +1,5 @@
-# Raw and generated data
+# Large raw dataset
 data/raw/
-data/curated/
 
 # Python
 __pycache__/
@@ -20,3 +19,7 @@ Thumbs.db
 # IDE files
 .vscode/
 .idea/
+
+# Spark checksum files
+*.crc
+**/_SUCCESS
