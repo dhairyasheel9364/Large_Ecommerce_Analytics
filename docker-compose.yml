@@ -1,0 +1,51 @@
+services:
+
+  # ============================================================
+  # SPARK ETL
+  # ============================================================
+
+  spark-processor:
+
+    build: ./spark
+
+    container_name: spark_etl
+
+    # Mount raw and curated data into the Spark container.
+    volumes:
+      - ./data:/app/data
+
+    # Limit the entire Spark container to 5.5 GB.
+    # Spark itself has a 4 GB driver heap.
+    deploy:
+      resources:
+        limits:
+          memory: 5.5G
+        reservations:
+          memory: 4G
+
+    # ETL should run once and then stop.
+    restart: "no"
+
+
+  # ============================================================
+  # STREAMLIT DASHBOARD
+  # ============================================================
+
+  streamlit-app:
+
+    build: ./dashboard
+
+    container_name: streamlit_dashboard
+
+    # Make Streamlit available at localhost:8501.
+    ports:
+      - "8501:8501"
+
+    # Dashboard only needs read access to processed Parquet files.
+    volumes:
+      - ./data/curated:/app/data/curated:ro
+
+    # Start Streamlit only after Spark ETL succeeds.
+    depends_on:
+      spark-processor:
+        condition: service_completed_successfully
