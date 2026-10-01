@@ -29,9 +29,10 @@ st.caption(
 # ------------------------------------------------------------
 # DATA PATHS
 # ------------------------------------------------------------
-FUNNEL_FILE = "/app/data/curated/daily_funnel.parquet"
-BRAND_FILE = "/app/data/curated/brand_metrics.parquet"
-HOURLY_FILE = "/app/data/curated/hourly_dynamics.parquet"
+# Repository-relative paths for local and Streamlit Cloud deployment.
+FUNNEL_FILE = "data/curated/daily_funnel.parquet"
+BRAND_FILE = "data/curated/brand_metrics.parquet"
+HOURLY_FILE = "data/curated/hourly_dynamics.parquet"
 
 # ------------------------------------------------------------
 # LOAD DATA
@@ -188,7 +189,7 @@ with col_left:
 )
     )
     fig_funnel.update_layout(margin=dict(l=20, r=20, t=20, b=20))
-    st.plotly_chart(fig_funnel, use_container_width=True)
+    st.plotly_chart(fig_funnel, width="stretch")
 
 with col_right:
     st.subheader("Hourly Traffic Dynamics")
@@ -244,7 +245,7 @@ with col_right:
 
     st.plotly_chart(
         fig_hourly,
-        use_container_width=True
+        width="stretch"
     )
 
 # ------------------------------------------------------------
@@ -288,7 +289,7 @@ st.dataframe(
             "gmv"
         ]
     ],
-    use_container_width=True,
+    width="stretch",
     hide_index=True,
     column_config={
 
@@ -376,7 +377,7 @@ st.dataframe(
             "gmv"
         ]
     ],
-    use_container_width=True,
+    width="stretch",
     hide_index=True,
     column_config={
 
