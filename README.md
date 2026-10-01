@@ -10,15 +10,13 @@ The project processes large-scale e-commerce behavioral data, transforms raw eve
 
 
 
-\## Live Dashboard
+## Live Dashboard
 
 
 
-\*\*\[Open the Live Streamlit Dashboard](https://large-ecommerce-analytics-proj.streamlit.app/)\*\*
+ [Open the Live Streamlit Dashboard](https://large-ecommerce-analytics-proj.streamlit.app/)
 
 
-
-\---
 
 
 
