@@ -20,63 +20,47 @@ The project processes large-scale e-commerce behavioral data, transforms raw eve
 
 
 
-\## 📊 Project Overview
+📊 Project Overview
 
 
 
 This project analyzes e-commerce user behavior across product views, cart events, and purchase events.
 
-
-
 The goal is to demonstrate a complete analytics workflow:
 
-
-
-\*\*Raw Data → Distributed Processing → Curated Data → Interactive Dashboard\*\*
-
-
+*Raw Data → Distributed Processing → Curated Data → Interactive Dashboard
 
 The pipeline uses Apache Spark for large-scale processing while keeping the final dashboard lightweight by consuming only the aggregated Parquet datasets.
 
 
 
-\---
-
-
-
-\## 🎯 Business Questions
-
-
+🎯 Business Questions
 
 The dashboard is designed to answer questions such as:
 
+1* How much product traffic is generated?
 
+2* How many users/events progress from viewing to cart and purchase?
 
-\* How much product traffic is generated?
+3* What is the purchase-event rate?
 
-\* How many users/events progress from viewing to cart and purchase?
+4* Which product categories generate the most GMV?
 
-\* What is the purchase-event rate?
+5* Which brands generate the most revenue?
 
-\* Which product categories generate the most GMV?
+6* How does customer activity change throughout the day?
 
-\* Which brands generate the most revenue?
-
-\* How does customer activity change throughout the day?
-
-\* How do category-level metrics compare?
-
-
-
-\---
+7* How do category-level metrics compare?
 
 
 
-\## 🏗️ Architecture
+---
 
 
+🏗️ Architecture
 
-```text
+
+```
 
 &#x20;                Kaggle E-Commerce Dataset
 
@@ -147,48 +131,43 @@ The dashboard is designed to answer questions such as:
 ```
 
 
-
-\---
-
+---
 
 
-\## ⚙️ Data Engineering
 
+⚙️ Data Engineering
 
 
 The raw dataset contains millions of e-commerce behavioral events.
 
 
-
 The PySpark ETL pipeline performs:
 
 
+1. Explicit schema definition
 
-1\. Explicit schema definition
+2. Data cleaning
 
-2\. Data cleaning
+3. Positive-price filtering
 
-3\. Positive-price filtering
+4. Missing brand/category handling
 
-4\. Missing brand/category handling
+5. Timestamp parsing
 
-5\. Timestamp parsing
+6. Date and hour extraction
 
-6\. Date and hour extraction
+7. Main-category extraction
 
-7\. Main-category extraction
+8. Daily funnel aggregation
 
-8\. Daily funnel aggregation
+9. Brand-level performance aggregation
 
-9\. Brand-level performance aggregation
+10. Hourly event aggregation
 
-10\. Hourly event aggregation
-
-11\. Parquet output generation
-
+11. Parquet output generation
 
 
-\### Curated datasets
+*Curated datasets
 
 
 
@@ -208,116 +187,91 @@ The raw CSV files are intentionally excluded from Git because of their large siz
 
 
 
-\---
+---
 
 
 
 \## 📈 Dashboard Features
 
-
-
-\### KPI Overview
-
-
+*KPI Overview
 
 The dashboard displays:
 
 
+1* Product Views
 
-\* Product Views
+2* Add-to-Cart Events
 
-\* Add-to-Cart Events
+3* Purchase Events
 
-\* Purchase Events
+4* Purchase Rate
 
-\* Purchase Rate
-
-\* Average Revenue per Purchase
-
+5* Average Revenue per Purchase
 
 
-\### Conversion Funnel
 
-
+### Conversion Funnel
 
 The interactive funnel visualizes:
 
 
 
-\*\*Product Views → Add-to-Cart Events → Purchase Events\*\*
+*Product Views → Add-to-Cart Events → Purchase Events
 
 
 
-\### Category Analysis
-
-
+### Category Analysis
 
 Users can filter the dashboard by product category and inspect:
 
 
-
-\* Views
-
-\* Purchases
-
-\* Purchase rate
-
-\* GMV
+* Views
+* Purchases
+* Purchase rate
+* GMV
 
 
 
-\### Brand Performance
-
-
+# Brand Performance
 
 The dashboard displays the top brands by GMV along with:
 
 
 
-\* Views
+* Views
 
-\* Purchases
+* Purchases
 
-\* Purchase rate
+* Purchase rate
 
-\* GMV
-
-
-
-\### Hourly Traffic Dynamics
+* GMV
 
 
+
+# Hourly Traffic Dynamics
 
 An interactive Plotly visualization shows event activity throughout the day.
 
-
-
-\### Revenue Summary
-
-
+# Revenue Summary
 
 The dashboard provides:
 
+* Total GMV
 
+* Average Revenue per Purchase
 
-\* Total GMV
-
-\* Average Revenue per Purchase
-
-\* Cart-to-Purchase Rate
-
-
-
-\---
+* Cart-to-Purchase Rate
 
 
 
-\## 📊 October 2019 Dataset Metrics
+---
 
+
+
+📊 October 2019 Dataset Metrics
 
 
 For the October 2019 processed dataset:
-
 
 
 | Metric                     |           Value |
@@ -340,67 +294,7 @@ For the October 2019 processed dataset:
 
 
 
-\---
-
-
-
-\## 🧮 Metric Definitions
-
-
-
-\*\*Purchase Rate\*\*
-
-
-
-```text
-
-Purchase Events ÷ Product View Events × 100
-
-```
-
-
-
-\*\*Cart-to-Purchase Rate\*\*
-
-
-
-```text
-
-Purchase Events ÷ Add-to-Cart Events × 100
-
-```
-
-
-
-\*\*Average Revenue / Purchase\*\*
-
-
-
-```text
-
-GMV ÷ Purchase Events
-
-```
-
-
-
-\*\*GMV\*\*
-
-
-
-```text
-
-Sum of product prices associated with purchase events
-
-```
-
-
-
-\---
-
-
-
-\## ⚠️ Methodology \& Limitations
+---
 
 
 
@@ -412,29 +306,27 @@ Therefore:
 
 
 
-\* Purchase events should not automatically be interpreted as unique orders.
+* Purchase events should not automatically be interpreted as unique orders.
 
-\* Purchase-event metrics should not be interpreted as unique-customer conversion rates.
+* Purchase-event metrics should not be interpreted as unique-customer conversion rates.
 
-\* The current purchase rate is based on event counts.
+* The current purchase rate is based on event counts.
 
-\* Average revenue per purchase is calculated from purchase events rather than an order-level identifier.
+* Average revenue per purchase is calculated from purchase events rather than an order-level identifier.
 
-\* The dashboard currently focuses on October 2019.
+* The dashboard currently focuses on October 2019.
 
-\* Raw data is processed locally and is not stored in the Git repository.
-
-
+* Raw data is processed locally and is not stored in the Git repository.
 
 These definitions are documented directly in the dashboard.
 
 
 
-\---
+---
 
 
 
-\## 🛠️ Tech Stack
+🛠️ Tech Stack
 
 
 
@@ -466,91 +358,20 @@ These definitions are documented directly in the dashboard.
 
 
 
-\---
 
 
 
-\## 📁 Project Structure
+💻 Run Locally
+ *Prerequisites
+
+* Docker Desktop
+* WSL2
+* Git
+* Kaggle dataset
 
 
 
-```text
-
-Large\_Ecommerce\_Analytics/
-
-│
-
-├── dashboard/
-
-│   ├── app.py
-
-│   ├── Dockerfile
-
-│   └── requirements.txt
-
-│
-
-├── spark/
-
-│   ├── Dockerfile
-
-│   └── etl\_job.py
-
-│
-
-├── data/
-
-│   ├── curated/
-
-│   │   ├── brand\_metrics.parquet/
-
-│   │   ├── daily\_funnel.parquet/
-
-│   │   └── hourly\_dynamics.parquet/
-
-│   │
-
-│   └── raw/
-
-│       └── # excluded from Git
-
-│
-
-├── docker-compose.yml
-
-├── .gitignore
-
-└── README.md
-
-```
-
-
-
-\---
-
-
-
-\## 💻 Run Locally
-
-
-
-\### Prerequisites
-
-
-
-\* Docker Desktop
-
-\* WSL2
-
-\* Git
-
-\* Kaggle dataset
-
-
-
-\### Start the project
-
-
+# Start the project
 
 Clone the repository:
 
@@ -566,10 +387,7 @@ cd Large\_Ecommerce\_Analytics
 
 ```
 
-
-
 Place the raw dataset inside:
-
 
 
 ```text
@@ -578,32 +396,22 @@ data/raw/
 
 ```
 
-
-
 The expected files are:
 
-
-
 ```text
-
 2019-Oct.csv
 
 2019-Nov.csv
 
 ```
 
-
-
 Then start the pipeline:
-
-
 
 ```bash
 
 docker compose up --build
 
 ```
-
 
 
 The Spark container processes the raw data and writes the curated Parquet datasets.
@@ -622,90 +430,50 @@ http://localhost:8501
 
 
 
-\---
+---
 
 
 
-\## 🎥 Demo
-
-
-
-A short screen recording demonstrating the dashboard will be added here.
-
-
-
-\*\*\[Watch the Dashboard Demo](PASTE-YOUR-VIDEO-LINK-HERE)\*\*
-
-
-
-\---
-
-
-
-\## 🔮 Future Improvements
-
-
+🔮 Future Improvements
 
 Potential extensions include:
 
 
+* Processing November 2019 data
 
-\* Processing November 2019 data
+* Adding customer-level behavioral analysis
 
-\* Adding customer-level behavioral analysis
+* Adding category-specific hourly analysis
 
-\* Adding category-specific hourly analysis
+* Adding repeat-purchase analysis where appropriate identifiers permit
 
-\* Adding repeat-purchase analysis where appropriate identifiers permit
+* Expanding time-series analytics
 
-\* Expanding time-series analytics
+* Adding automated data-quality checks
 
-\* Adding automated data-quality checks
+* Adding additional business KPIs
 
-\* Adding additional business KPIs
-
-\* Improving dashboard interactions and drill-down capabilities
-
-
-
-\---
+* Improving dashboard interactions and drill-down capabilities
 
 
 
-\## 📚 Dataset
+---
 
 
-
-Dataset:
-
-
-
-\*\*E-Commerce Behavior Data from Multi Category Store\*\*
-
-
-
+📚 Dataset
 Source:
-
-
 
 \[Kaggle Dataset](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store)
 
 
-
 The dataset contains behavioral events from an e-commerce platform, including product views, cart events, and purchases.
 
+---
 
 
-\---
+👤 Author
 
-
-
-\## 👤 Author
-
-
-
-\*\*Dhairyasheel Wangdare\*\*
-
+Dhairyasheel Wangdare
 
 
 GitHub:
