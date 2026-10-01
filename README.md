@@ -1,18 +1,15 @@
-\#  E-Commerce Product \& Conversion Analytics
+E-Commerce Product & Conversion Analytics
 
 
 
-An end-to-end e-commerce analytics project built with \*\*Apache Spark, Python, Pandas, Plotly, Docker, and Streamlit\*\*.
-
+An end-to-end e-commerce analytics project built with PySpark, Python, Pandas, Plotly, Docker, and Streamlit.
 
 
 The project processes large-scale e-commerce behavioral data, transforms raw event data into analytics-ready datasets using PySpark, and presents the results through an interactive web dashboard.
 
 
 
-## Live Dashboard
-
-
+## Live Dashboard --->
 
  [Open the Live Streamlit Dashboard](https://large-ecommerce-analytics-proj.streamlit.app/)
 
@@ -23,12 +20,11 @@ The project processes large-scale e-commerce behavioral data, transforms raw eve
 📊 Project Overview
 
 
-
 This project analyzes e-commerce user behavior across product views, cart events, and purchase events.
 
 The goal is to demonstrate a complete analytics workflow:
 
-*Raw Data → Distributed Processing → Curated Data → Interactive Dashboard
+*Raw Data → Distributed Processing → Curated Data → Interactive Dashboard*
 
 The pipeline uses Apache Spark for large-scale processing while keeping the final dashboard lightweight by consuming only the aggregated Parquet datasets.
 
