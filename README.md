@@ -2,7 +2,7 @@ E-Commerce Product & Conversion Analytics
 
 
 
-An end-to-end e-commerce analytics project built with PySpark, Python, Pandas, Plotly, Docker, and Streamlit.
+An end-to-end Interactive e-commerce analytics project built with PySpark, Python, Pandas, Plotly, Docker, and Streamlit.
 
 
 The project processes large-scale e-commerce behavioral data, transforms raw event data into analytics-ready datasets using PySpark, and presents the results through an interactive web dashboard.
